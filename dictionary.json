@@ -1,0 +1,1008 @@
+[
+  {
+    "id": "1",
+    "tunisian": "Ya toutou",
+    "german": "Süßer (Kosename)",
+    "notes": "Endearment"
+  },
+  {
+    "id": "2",
+    "tunisian": "Theb tokhrej maaya?",
+    "german": "Willst du mit mir rausgehen?",
+    "notes": ""
+  },
+  {
+    "id": "3",
+    "tunisian": "Ey betbiaa",
+    "german": "Ja, natürlich",
+    "notes": ""
+  },
+  {
+    "id": "4",
+    "tunisian": "Aaslema",
+    "german": "Hallo",
+    "notes": ""
+  },
+  {
+    "id": "5",
+    "tunisian": "Bislema",
+    "german": "Tschüss",
+    "notes": ""
+  },
+  {
+    "id": "6",
+    "tunisian": "Ahla",
+    "german": "Hallo",
+    "notes": "abgehacktes ah l"
+  },
+  {
+    "id": "7",
+    "tunisian": "Kol aam wenti haya bkhir",
+    "german": "Schönes neues Jahr",
+    "notes": "nchalah aam wenti haya bkhir (auch für Geburtstag)"
+  },
+  {
+    "id": "8",
+    "tunisian": "Batata",
+    "german": "Kartoffel",
+    "notes": ""
+  },
+  {
+    "id": "9",
+    "tunisian": "Mahlek",
+    "german": "Du bist schön",
+    "notes": ""
+  },
+  {
+    "id": "10",
+    "tunisian": "Mazinek",
+    "german": "Du bist hübsch",
+    "notes": ""
+  },
+  {
+    "id": "11",
+    "tunisian": "Chnahwelek",
+    "german": "Wie gehts",
+    "notes": ""
+  },
+  {
+    "id": "12",
+    "tunisian": "Lebes",
+    "german": "Mir gehts gut",
+    "notes": ""
+  },
+  {
+    "id": "13",
+    "tunisian": "Houta katkouta",
+    "german": "Fisch ala honey",
+    "notes": ""
+  },
+  {
+    "id": "14",
+    "tunisian": "Khra",
+    "german": "Scheisse",
+    "notes": ""
+  },
+  {
+    "id": "15",
+    "tunisian": "Chfama?",
+    "german": "Was ist los?",
+    "notes": ""
+  },
+  {
+    "id": "16",
+    "tunisian": "Sahit",
+    "german": "Gut gemacht",
+    "notes": ""
+  },
+  {
+    "id": "17",
+    "tunisian": "Aalech",
+    "german": "Warum",
+    "notes": ""
+  },
+  {
+    "id": "18",
+    "tunisian": "Chnia theb?",
+    "german": "Was willst du?",
+    "notes": ""
+  },
+  {
+    "id": "19",
+    "tunisian": "9oli",
+    "german": "Sags mir",
+    "notes": ""
+  },
+  {
+    "id": "20",
+    "tunisian": "N9olek",
+    "german": "Ich sage",
+    "notes": ""
+  },
+  {
+    "id": "21",
+    "tunisian": "Chniya n9olek",
+    "german": "Was soll ich sagen",
+    "notes": ""
+  },
+  {
+    "id": "22",
+    "tunisian": "Barcha",
+    "german": "Sehr / Zu viel",
+    "notes": ""
+  },
+  {
+    "id": "23",
+    "tunisian": "Behi",
+    "german": "Okay",
+    "notes": ""
+  },
+  {
+    "id": "24",
+    "tunisian": "Hachti",
+    "german": "Ich brauche",
+    "notes": ""
+  },
+  {
+    "id": "25",
+    "tunisian": "Kelma",
+    "german": "Ein Wort",
+    "notes": ""
+  },
+  {
+    "id": "26",
+    "tunisian": "Jdida",
+    "german": "Neue",
+    "notes": ""
+  },
+  {
+    "id": "27",
+    "tunisian": "Hachti kelma jdida",
+    "german": "Ich brauch ein neues Wort",
+    "notes": ""
+  },
+  {
+    "id": "28",
+    "tunisian": "Wakteh",
+    "german": "Wann",
+    "notes": ""
+  },
+  {
+    "id": "29",
+    "tunisian": "Ftart",
+    "german": "Hast du gegessen?",
+    "notes": ""
+  },
+  {
+    "id": "30",
+    "tunisian": "Manaarafech",
+    "german": "Ich weiß nicht",
+    "notes": ""
+  },
+  {
+    "id": "31",
+    "tunisian": "Heka aalech",
+    "german": "Das ist warum",
+    "notes": ""
+  },
+  {
+    "id": "32",
+    "tunisian": "Shab",
+    "german": "Freunde",
+    "notes": ""
+  },
+  {
+    "id": "33",
+    "tunisian": "Maaya",
+    "german": "Mit mir",
+    "notes": ""
+  },
+  {
+    "id": "34",
+    "tunisian": "Ena",
+    "german": "Ich",
+    "notes": ""
+  },
+  {
+    "id": "35",
+    "tunisian": "Ey wenti",
+    "german": "Ja und du",
+    "notes": ""
+  },
+  {
+    "id": "36",
+    "tunisian": "Jmal",
+    "german": "Kamel",
+    "notes": ""
+  },
+  {
+    "id": "37",
+    "tunisian": "Kol chay",
+    "german": "Alles",
+    "notes": ""
+  },
+  {
+    "id": "38",
+    "tunisian": "Kho",
+    "german": "Nimm",
+    "notes": ""
+  },
+  {
+    "id": "39",
+    "tunisian": "Bedhabt",
+    "german": "Genau",
+    "notes": ""
+  },
+  {
+    "id": "40",
+    "tunisian": "9ahwa",
+    "german": "Kaffee",
+    "notes": ""
+  },
+  {
+    "id": "41",
+    "tunisian": "Ambouba",
+    "german": "Lampe",
+    "notes": ""
+  },
+  {
+    "id": "42",
+    "tunisian": "Farch",
+    "german": "Bett",
+    "notes": ""
+  },
+  {
+    "id": "43",
+    "tunisian": "Na9ra",
+    "german": "Ich lerne",
+    "notes": ""
+  },
+  {
+    "id": "44",
+    "tunisian": "ta9ra",
+    "german": "Du lernst",
+    "notes": ""
+  },
+  {
+    "id": "45",
+    "tunisian": "Djeja",
+    "german": "Chicken",
+    "notes": ""
+  },
+  {
+    "id": "46",
+    "tunisian": "Falous",
+    "german": "Küken",
+    "notes": ""
+  },
+  {
+    "id": "47",
+    "tunisian": "Blech",
+    "german": "Kostenlos",
+    "notes": ""
+  },
+  {
+    "id": "48",
+    "tunisian": "Nabta",
+    "german": "Pflanze",
+    "notes": ""
+  },
+  {
+    "id": "49",
+    "tunisian": "Me",
+    "german": "Wasser",
+    "notes": ""
+  },
+  {
+    "id": "50",
+    "tunisian": "Ji3an",
+    "german": "Ich hab Hunger",
+    "notes": ""
+  },
+  {
+    "id": "51",
+    "tunisian": "Tawa 9omt",
+    "german": "Ich bin gerade aufgewacht",
+    "notes": ""
+  },
+  {
+    "id": "52",
+    "tunisian": "Bech nemchi nor9ed",
+    "german": "Ich geh schlafen",
+    "notes": ""
+  },
+  {
+    "id": "53",
+    "tunisian": "Tawa",
+    "german": "Jetzt",
+    "notes": ""
+  },
+  {
+    "id": "54",
+    "tunisian": "Behi barcha",
+    "german": "Sehr gut",
+    "notes": ""
+  },
+  {
+    "id": "55",
+    "tunisian": "Ahsen",
+    "german": "Das Beste",
+    "notes": ""
+  },
+  {
+    "id": "56",
+    "tunisian": "Chkoun ahsen ETechniker",
+    "german": "Wer ist der beste ETechniker",
+    "notes": ""
+  },
+  {
+    "id": "57",
+    "tunisian": "Oui naaref",
+    "german": "Ich weiß",
+    "notes": ""
+  },
+  {
+    "id": "58",
+    "tunisian": "Hedha men fadhlek",
+    "german": "Sehr nett von dir",
+    "notes": ""
+  },
+  {
+    "id": "59",
+    "tunisian": "Nchoufek Baad",
+    "german": "Bis gleich",
+    "notes": ""
+  },
+  {
+    "id": "60",
+    "tunisian": "A toute",
+    "german": "Bis gleich",
+    "notes": ""
+  },
+  {
+    "id": "61",
+    "tunisian": "Chkoun",
+    "german": "Wer",
+    "notes": ""
+  },
+  {
+    "id": "62",
+    "tunisian": "Maadech lezem testana",
+    "german": "Du musst nicht mehr warten",
+    "notes": ""
+  },
+  {
+    "id": "63",
+    "tunisian": "Maadech lezem nestanew",
+    "german": "Wir müssen nicht mehr warten",
+    "notes": ""
+  },
+  {
+    "id": "64",
+    "tunisian": "Heka aaleh s7ab maak",
+    "german": "Deswegen bin ich mit dir befreundet",
+    "notes": ""
+  },
+  {
+    "id": "65",
+    "tunisian": "Oss",
+    "german": "Nervig / Langweilig (für Personen)",
+    "notes": ""
+  },
+  {
+    "id": "66",
+    "tunisian": "Ossi",
+    "german": "Nervige Person",
+    "notes": ""
+  },
+  {
+    "id": "67",
+    "tunisian": "Batrik",
+    "german": "Pinguin",
+    "notes": ""
+  },
+  {
+    "id": "68",
+    "tunisian": "Bonne courage",
+    "german": "Viel Erfolg",
+    "notes": ""
+  },
+  {
+    "id": "69",
+    "tunisian": "Moufej2a",
+    "german": "Überraschung",
+    "notes": ""
+  },
+  {
+    "id": "70",
+    "tunisian": "Le le le",
+    "german": "Nein nein nein",
+    "notes": ""
+  },
+  {
+    "id": "71",
+    "tunisian": "Saat 9array",
+    "german": "Manchmal Nerd",
+    "notes": ""
+  },
+  {
+    "id": "72",
+    "tunisian": "Wallah",
+    "german": "Ich schwöre",
+    "notes": ""
+  },
+  {
+    "id": "73",
+    "tunisian": "tfehemna",
+    "german": "Wir sind einig (we agree)",
+    "notes": "mchet maak (nur als Antwort)"
+  },
+  {
+    "id": "74",
+    "tunisian": "Martin",
+    "german": "Zweimal",
+    "notes": ""
+  },
+  {
+    "id": "75",
+    "tunisian": "Asli",
+    "german": "Eingeborener / Meine Herkunft",
+    "notes": ""
+  },
+  {
+    "id": "76",
+    "tunisian": "Buss",
+    "german": "Kuss",
+    "notes": ""
+  },
+  {
+    "id": "77",
+    "tunisian": "Selem",
+    "german": "Peace",
+    "notes": ""
+  },
+  {
+    "id": "78",
+    "tunisian": "Marhbé",
+    "german": "Willkommen",
+    "notes": ""
+  },
+  {
+    "id": "79",
+    "tunisian": "tesbah aala khir",
+    "german": "Gute Nacht",
+    "notes": ""
+  },
+  {
+    "id": "80",
+    "tunisian": "sbeh el khir",
+    "german": "Guten Morgen",
+    "notes": ""
+  },
+  {
+    "id": "81",
+    "tunisian": "Ah d.h na9ra belgde",
+    "german": "Ah d.h ich lerne sehr gut",
+    "notes": ""
+  },
+  {
+    "id": "82",
+    "tunisian": "Mabinetnech",
+    "german": "Bitte, kein danke zwischen uns",
+    "notes": "im Norden ohne Ma"
+  },
+  {
+    "id": "83",
+    "tunisian": "Mabrouk",
+    "german": "Congrats",
+    "notes": ""
+  },
+  {
+    "id": "84",
+    "tunisian": "Dima",
+    "german": "Immer",
+    "notes": ""
+  },
+  {
+    "id": "85",
+    "tunisian": "Marhbé bik binetna",
+    "german": "Willkommen zurück",
+    "notes": ""
+  },
+  {
+    "id": "86",
+    "tunisian": "Haw",
+    "german": "Es ist",
+    "notes": ""
+  },
+  {
+    "id": "87",
+    "tunisian": "ykeb kboubek",
+    "german": "Schimpfwort (ykeb kboubek)",
+    "notes": ""
+  },
+  {
+    "id": "88",
+    "tunisian": "ykeb saadek",
+    "german": "Schimpfwort (ykeb saadek)",
+    "notes": ""
+  },
+  {
+    "id": "89",
+    "tunisian": "yaatek khazou9",
+    "german": "Schimpfwort (yaatek khazou9)",
+    "notes": ""
+  },
+  {
+    "id": "90",
+    "tunisian": "9adar",
+    "german": "Schicksal",
+    "notes": "maktoub"
+  },
+  {
+    "id": "91",
+    "tunisian": "Denya tdour",
+    "german": "Die Welt dreht sich",
+    "notes": "Wenn etwas gleich ist, nur mit vertauschten Rollen"
+  },
+  {
+    "id": "92",
+    "tunisian": "Mersa alik",
+    "german": "Danke",
+    "notes": ""
+  },
+  {
+    "id": "93",
+    "tunisian": "Liltek zina",
+    "german": "Gute Nacht",
+    "notes": ""
+  },
+  {
+    "id": "94",
+    "tunisian": "Ehlem beya",
+    "german": "Träum von mir",
+    "notes": ""
+  },
+  {
+    "id": "95",
+    "tunisian": "Lella",
+    "german": "Meine Dame",
+    "notes": "Aussprache lilla"
+  },
+  {
+    "id": "96",
+    "tunisian": "Sbeh l ward Lella",
+    "german": "Guten Morgen meine Dame",
+    "notes": ""
+  },
+  {
+    "id": "97",
+    "tunisian": "Masset",
+    "german": "Langweilig",
+    "notes": ""
+  },
+  {
+    "id": "98",
+    "tunisian": "Darbaa",
+    "german": "Gute Überraschung",
+    "notes": ""
+  },
+  {
+    "id": "99",
+    "tunisian": "Zayna",
+    "german": "Hübsch",
+    "notes": "-a für Frauen"
+  },
+  {
+    "id": "100",
+    "tunisian": "Tahfouna",
+    "german": "Hübsch",
+    "notes": ""
+  },
+  {
+    "id": "101",
+    "tunisian": "Zaaben",
+    "german": "Ohne Pause flirten",
+    "notes": "zaabena für Frauen"
+  },
+  {
+    "id": "102",
+    "tunisian": "Mahlena",
+    "german": "Wir sind hübsch",
+    "notes": "-na für wir"
+  },
+  {
+    "id": "103",
+    "tunisian": "Tensenich",
+    "german": "Vergiss mich nicht",
+    "notes": ""
+  },
+  {
+    "id": "104",
+    "tunisian": "Rik",
+    "german": "Wenn man sich rausputzt",
+    "notes": "Barcha rik!"
+  },
+  {
+    "id": "105",
+    "tunisian": "Gamra",
+    "german": "Mond",
+    "notes": "z.B. zayna ki l gamra"
+  },
+  {
+    "id": "106",
+    "tunisian": "Farhan",
+    "german": "Glücklich",
+    "notes": "Ena farhan"
+  },
+  {
+    "id": "107",
+    "tunisian": "Inchallah",
+    "german": "Aber mal schauen",
+    "notes": ""
+  },
+  {
+    "id": "108",
+    "tunisian": "Go3r",
+    "german": "Asozial",
+    "notes": ""
+  },
+  {
+    "id": "109",
+    "tunisian": "Lokza / lobza",
+    "german": "Langweilig",
+    "notes": "für Personen"
+  },
+  {
+    "id": "110",
+    "tunisian": "Kalb",
+    "german": "Hund",
+    "notes": ""
+  },
+  {
+    "id": "111",
+    "tunisian": "Nharek assed layam",
+    "german": "Guten Tag / Guten Morgen",
+    "notes": ""
+  },
+  {
+    "id": "112",
+    "tunisian": "Mahla gaddek",
+    "german": "Deine Schönheit ist schön",
+    "notes": "sehr romantisch"
+  },
+  {
+    "id": "113",
+    "tunisian": "Tohfa",
+    "german": "Meisterstück",
+    "notes": "Kompliment auch über Person"
+  },
+  {
+    "id": "114",
+    "tunisian": "wehed",
+    "german": "Eins (1)",
+    "notes": ""
+  },
+  {
+    "id": "115",
+    "tunisian": "thnin",
+    "german": "Zwei (2)",
+    "notes": ""
+  },
+  {
+    "id": "116",
+    "tunisian": "tletha",
+    "german": "Drei (3)",
+    "notes": ""
+  },
+  {
+    "id": "117",
+    "tunisian": "Taks",
+    "german": "Wetter",
+    "notes": ""
+  },
+  {
+    "id": "118",
+    "tunisian": "Techta Maya?",
+    "german": "Willst du mit mir tanzen?",
+    "notes": ""
+  },
+  {
+    "id": "119",
+    "tunisian": "Amal barcha jaw",
+    "german": "Viel Spaß!",
+    "notes": ""
+  },
+  {
+    "id": "120",
+    "tunisian": "Korsi",
+    "german": "Stuhl",
+    "notes": ""
+  },
+  {
+    "id": "121",
+    "tunisian": "Tofla",
+    "german": "Mädchen",
+    "notes": ""
+  },
+  {
+    "id": "122",
+    "tunisian": "Chams",
+    "german": "Sonne",
+    "notes": ""
+  },
+  {
+    "id": "123",
+    "tunisian": "Ghouroub chams",
+    "german": "Sonnenuntergang",
+    "notes": ""
+  },
+  {
+    "id": "124",
+    "tunisian": "9attoussa",
+    "german": "Katze",
+    "notes": "Zum flirten, süß"
+  },
+  {
+    "id": "125",
+    "tunisian": "Hob / 7ob",
+    "german": "Liebe",
+    "notes": ""
+  },
+  {
+    "id": "126",
+    "tunisian": "Boussa",
+    "german": "Ein Kuss",
+    "notes": ""
+  },
+  {
+    "id": "127",
+    "tunisian": "Tedallel",
+    "german": "Danke/ich verwöhne dich gerne",
+    "notes": ""
+  },
+  {
+    "id": "128",
+    "tunisian": "Samahni",
+    "german": "Ich entschuldige mich/ verzeih mir",
+    "notes": ""
+  },
+  {
+    "id": "129",
+    "tunisian": "Kteb",
+    "german": "Buch",
+    "notes": ""
+  },
+  {
+    "id": "130",
+    "tunisian": "Win",
+    "german": "Wo",
+    "notes": ""
+  },
+  {
+    "id": "131",
+    "tunisian": "twahachtek",
+    "german": "Ich vermisse dich",
+    "notes": "hat ena"
+  },
+  {
+    "id": "132",
+    "tunisian": "Fissa fissa heya fissa",
+    "german": "Schnell",
+    "notes": ""
+  },
+  {
+    "id": "133",
+    "tunisian": "Schnoa",
+    "german": "Was",
+    "notes": "Schnu, Schnoa schnoa??"
+  },
+  {
+    "id": "134",
+    "tunisian": "Rabi yfadhlek",
+    "german": "Danke",
+    "notes": ""
+  },
+  {
+    "id": "135",
+    "tunisian": "Boussa marsoussa",
+    "german": "Guter langer Kuss",
+    "notes": ""
+  },
+  {
+    "id": "136",
+    "tunisian": "Chamaa / cham3a",
+    "german": "Kerze",
+    "notes": ""
+  },
+  {
+    "id": "137",
+    "tunisian": "Damm",
+    "german": "Blut",
+    "notes": ""
+  },
+  {
+    "id": "138",
+    "tunisian": "Hajra / 7ajra",
+    "german": "Stein",
+    "notes": ""
+  },
+  {
+    "id": "139",
+    "tunisian": "serwel",
+    "german": "Hose",
+    "notes": ""
+  },
+  {
+    "id": "140",
+    "tunisian": "Klasset",
+    "german": "Socken",
+    "notes": ""
+  },
+  {
+    "id": "141",
+    "tunisian": "Maryoul",
+    "german": "Tshirt",
+    "notes": ""
+  },
+  {
+    "id": "142",
+    "tunisian": "dabouza",
+    "german": "Flasche",
+    "notes": ""
+  },
+  {
+    "id": "143",
+    "tunisian": "Mkass",
+    "german": "Scheere",
+    "notes": ""
+  },
+  {
+    "id": "144",
+    "tunisian": "taswira",
+    "german": "Bild",
+    "notes": ""
+  },
+  {
+    "id": "145",
+    "tunisian": "ena jit / jit",
+    "german": "Ich bin angekommen",
+    "notes": ""
+  },
+  {
+    "id": "146",
+    "tunisian": "hlemt / 7lemt",
+    "german": "Ich habe geträumt",
+    "notes": ""
+  },
+  {
+    "id": "147",
+    "tunisian": "aadham / 3dham",
+    "german": "Eier",
+    "notes": ""
+  },
+  {
+    "id": "148",
+    "tunisian": "Sac",
+    "german": "Tasche",
+    "notes": ""
+  },
+  {
+    "id": "149",
+    "tunisian": "Chaar",
+    "german": "Haar",
+    "notes": ""
+  },
+  {
+    "id": "150",
+    "tunisian": "Khcham / 5cham",
+    "german": "Nase",
+    "notes": ""
+  },
+  {
+    "id": "151",
+    "tunisian": "Fom",
+    "german": "Mund",
+    "notes": ""
+  },
+  {
+    "id": "152",
+    "tunisian": "Senin",
+    "german": "Zähne",
+    "notes": ""
+  },
+  {
+    "id": "153",
+    "tunisian": "Chfeyef",
+    "german": "Lippen",
+    "notes": ""
+  },
+  {
+    "id": "154",
+    "tunisian": "9alb / kalb",
+    "german": "Herz",
+    "notes": ""
+  },
+  {
+    "id": "155",
+    "tunisian": "Hdeya / Cadeau", "german": "Geschenk",
+    "notes": ""
+  },
+  {
+    "id": "156",
+    "tunisian": "Mefteh",
+    "german": "Schlüssel",
+    "notes": ""
+  },
+  {
+    "id": "157",
+    "tunisian": "Flouss",
+    "german": "Geld",
+    "notes": ""
+  },
+  {
+    "id": "158",
+    "tunisian": "Om",
+    "german": "Mutter",
+    "notes": "mma"
+  },
+  {
+    "id": "159",
+    "tunisian": "Okht",
+    "german": "Schwester",
+    "notes": "Okhti : meine Schwester"
+  },
+  {
+    "id": "160",
+    "tunisian": "Khou", "german": "Bruder",
+    "notes": "khouya : mein Bruder"
+  },
+  {
+    "id": "161",
+    "tunisian": "Enti",
+    "german": "Du",
+    "notes": ""
+  },
+  {
+    "id": "162",
+    "tunisian": "Howa",
+    "german": "Er",
+    "notes": ""
+  },
+  {
+    "id": "163",
+    "tunisian": "Heya",
+    "german": "Sie",
+    "notes": ""
+  },
+  {
+    "id": "164",
+    "tunisian": "Houma",
+    "german": "Sie plural",
+    "notes": ""
+  },
+  {
+    "id": "165",
+    "tunisian": "Entouma",
+    "german": "Ihr",
+    "notes": ""
+  },
+  {
+    "id": "166",
+    "tunisian": "Ahna",
+    "german": "Wir",
+    "notes": ""
+  },
+  {
+    "id": "167",
+    "tunisian": "Chbih l fraise mal à l‘aise",
+    "german": "Warum fühlt sich die Erdbeere nicht wohl",
+    "notes": ""
+  },
+  {
+    "id": "168",
+    "tunisian": "Chbih ellouz manbouz",
+    "german": "Warum ist die Mandel sauer",
+    "notes": ""
+  }
+]
