@@ -1,205 +1,266 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddWordModal from "@/components/AddWordModal";
 
-// Levenshtein distance algorithm for fuzzy matching
-function levenshteinDistance(a, b) {
-  if (a.length === 0) return b.length;
-  if (b.length === 0) return a.length;
-
-  const matrix = [];
-
-  for (let i = 0; i <= b.length; i++) {
-    matrix[i] = [i];
-  }
-
-  for (let j = 0; j <= a.length; j++) {
-    matrix[0][j] = j;
-  }
-
-  for (let i = 1; i <= b.length; i++) {
-    for (let j = 1; j <= a.length; j++) {
-      if (b.charAt(i - 1) === a.charAt(j - 1)) {
-        matrix[i][j] = matrix[i - 1][j - 1];
-      } else {
-        matrix[i][j] = Math.min(
-          matrix[i - 1][j - 1] + 1,
-          Math.min(matrix[i][j - 1] + 1,
-                   matrix[i - 1][j] + 1)
-        );
-      }
-    }
-  }
-
-  return matrix[b.length][a.length];
-}
+const PAGE_SIZE = 24;
 
 const translations = {
   de: {
-    title: "Tunesisch • Deutsch",
-    subtitle: "Übersetzer & Vokabeltrainer",
-    searchPlaceholder: "Suche nach einem Wort (Tunesisch oder Deutsch)...",
-    newWordBtn: "+ Neues Wort",
-    loading: "Lade Wörterbuch...",
-    noExactHits: "Keine genauen Treffer gefunden.",
-    didYouMean: "Meintest du:",
+    searchPlaceholder: "Ein Wort auf Tunesisch oder Deutsch suchen …",
+    newWordBtn: "Wort hinzufügen",
+    dictionary: "Wörterbuch",
+    results: "Suchergebnisse",
+    wordCount: (count) => `${count} Treffer`,
+    loading: "Suche im Wörterbuch …",
+    loadingMore: "Weitere Treffer werden geladen …",
+    noExactHits: "Keine passenden Treffer gefunden.",
+    didYouMean: "Meintest du",
     noResults: "Keine Ergebnisse gefunden.",
-    addQuestion: "hinzufügen?",
-    langToggle: "العربية"
+    addQuestion: "",
+    langToggle: "العربية",
+    editHint: "Rechtsklick zum Bearbeiten",
   },
   ar: {
-    title: "تونسي • ألماني",
-    subtitle: "مترجم ومدرب مفردات",
-    searchPlaceholder: "...البحث عن كلمة باللغة التونسية أو الألمانية",
-    newWordBtn: "+ كلمة جديدة",
-    loading: "...جاري تحميل القاموس",
-    noExactHits: ".لم يتم العثور على نتائج دقيقة",
-    didYouMean: "هل تقصد:",
-    noResults: ".لم يتم العثور على نتائج",
-    addQuestion: "إضافة؟",
-    langToggle: "Deutsch"
-  }
+    searchPlaceholder: "ابحث عن كلمة تونسية أو ألمانية...",
+    newWordBtn: "إضافة كلمة",
+    dictionary: "القاموس",
+    results: "نتائج البحث",
+    wordCount: (count) => `${count} نتيجة`,
+    loading: "جاري البحث في القاموس...",
+    loadingMore: "جاري تحميل المزيد...",
+    noExactHits: "لم يتم العثور على نتائج مطابقة.",
+    didYouMean: "هل تقصد",
+    noResults: "لم يتم العثور على نتائج.",
+    addQuestion: "",
+    langToggle: "Deutsch",
+    editHint: "انقر بزر الفأرة الأيمن للتعديل",
+  },
 };
 
 export default function Home() {
-  const [dictionary, setDictionary] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [words, setWords] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [suggestion, setSuggestion] = useState(null);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const [refreshVersion, setRefreshVersion] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [editingItem, setEditingItem] = useState(null);
   const [uiLang, setUiLang] = useState("de");
+  const sentinelRef = useRef(null);
+  const loadingMoreRef = useRef(false);
+  const searchQueryRef = useRef(searchQuery.trim());
+  const [loadedKey, setLoadedKey] = useState("");
 
   const t = translations[uiLang];
   const isRtl = uiLang === "ar";
+  const hasQuery = Boolean(searchQuery.trim());
+  const requestKey = `${searchQuery.trim()}::${refreshVersion}`;
+  const loading = loadedKey !== requestKey;
 
   useEffect(() => {
-    const fetchDictionary = async () => {
+    const query = searchQuery.trim();
+    searchQueryRef.current = query;
+    const controller = new AbortController();
+
+    const timeout = setTimeout(async () => {
       try {
-        const res = await fetch("/api/dictionary");
-        if (res.ok) {
-          const data = await res.json();
-          setDictionary(data);
-        }
+        const params = new URLSearchParams({ limit: String(PAGE_SIZE) });
+        if (query) params.set("q", query);
+        const response = await fetch(`/api/dictionary?${params}`, { signal: controller.signal });
+        if (!response.ok) throw new Error("Search failed");
+        const data = await response.json();
+        setWords(data.items);
+        setTotal(data.total);
+        setSuggestion(data.suggestion);
+        setHasMore(data.hasMore);
+        setLoadedKey(requestKey);
       } catch (error) {
-        console.error("Failed to load dictionary:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchDictionary();
-  }, []);
-
-  const { filteredWords, suggestion } = useMemo(() => {
-    if (!searchQuery.trim()) return { filteredWords: dictionary, suggestion: null };
-    
-    const query = searchQuery.toLowerCase().trim();
-    
-    const matches = dictionary.filter(item => 
-      item.tunisian.toLowerCase().includes(query) ||
-      item.german.toLowerCase().includes(query)
-    );
-
-    if (matches.length > 0) {
-      return { filteredWords: matches, suggestion: null };
-    }
-
-    let bestMatch = null;
-    let minDistance = Infinity;
-
-    if (query.length > 2) {
-      dictionary.forEach(item => {
-        const distT = levenshteinDistance(query, item.tunisian.toLowerCase());
-        const distG = levenshteinDistance(query, item.german.toLowerCase());
-        
-        const dist = Math.min(distT, distG);
-        const matchWord = distT < distG ? item.tunisian : item.german;
-
-        if (dist < minDistance) {
-          minDistance = dist;
-          bestMatch = matchWord;
+        if (error.name !== "AbortError") {
+          console.error("Failed to search dictionary:", error);
+          setWords([]);
+          setTotal(0);
+          setSuggestion(null);
+          setHasMore(false);
+          setLoadedKey(requestKey);
         }
+      }
+    }, 60);
+
+    return () => {
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, [requestKey, searchQuery, refreshVersion]);
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel || !hasMore || loading || loadingMore) return undefined;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting || loadingMoreRef.current) return;
+      loadingMoreRef.current = true;
+      setLoadingMore(true);
+
+      const requestedQuery = searchQuery.trim();
+      const params = new URLSearchParams({
+        offset: String(words.length),
+        limit: String(PAGE_SIZE),
       });
-    }
+      if (requestedQuery) params.set("q", requestedQuery);
+      fetch(`/api/dictionary?${params}`)
+        .then((response) => {
+          if (!response.ok) throw new Error("Could not load more results");
+          return response.json();
+        })
+        .then((data) => {
+          if (searchQueryRef.current !== requestedQuery) return;
+          setWords((current) => [...current, ...data.items]);
+          setTotal(data.total);
+          setHasMore(data.hasMore);
+        })
+        .catch((error) => console.error("Failed to load more dictionary entries:", error))
+        .finally(() => {
+          loadingMoreRef.current = false;
+          setLoadingMore(false);
+        });
+    }, { rootMargin: "240px" });
 
-    if (bestMatch && minDistance <= 3) {
-      return { filteredWords: [], suggestion: bestMatch };
-    }
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [hasMore, hasQuery, loading, loadingMore, searchQuery, words.length]);
 
-    return { filteredWords: [], suggestion: null };
-  }, [dictionary, searchQuery]);
-
-  const handleAddWord = (newItem) => {
-    setDictionary([...dictionary, newItem]);
+  const openAddModal = () => {
+    setEditingItem(null);
+    setIsModalOpen(true);
   };
 
-  const toggleLanguage = () => {
-    setUiLang(prev => prev === "de" ? "ar" : "de");
+  const openEditModal = (item) => {
+    setEditingItem(item);
+    setIsModalOpen(true);
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setEditingItem(null);
+  };
+
+  const handleSavedWord = () => setRefreshVersion((version) => version + 1);
+  const toggleLanguage = () => setUiLang((language) => language === "de" ? "ar" : "de");
 
   return (
     <main className="main-content" dir={isRtl ? "rtl" : "ltr"}>
-      <header className="app-header">
-        <button className="lang-toggle" onClick={toggleLanguage}>
-          {t.langToggle}
-        </button>
-        <div className="title-wrapper">
-          <div className="cultural-arch"></div>
-          <h1>{t.title}</h1>
-          <p className="subtitle">{t.subtitle}</p>
+      <section className="hero" aria-labelledby="hero-title">
+        <div className="hero-top-controls">
+          <button className="lang-toggle" onClick={toggleLanguage} type="button">
+            {t.langToggle}
+          </button>
         </div>
-      </header>
+        <div className="hero-kicker" dir="ltr">
+          <span dir="rtl">تونس</span>
+          <svg viewBox="0 0 104 28" fill="none" aria-hidden="true">
+            <path d="M4 19C16 6 25 5 36 13 45 20 53 25 65 20 75 16 79 9 87 11" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" />
+            <path d="M87 6 101 12 87 18Z" fill="currentColor" />
+          </svg>
+          <span className="germany-label">Deutschland</span>
+        </div>
+        <h1 id="hero-title">مترجم سريع</h1>
+        <div className="hero-rule" aria-hidden="true" />
+      </section>
 
-      <div className="controls-row">
+      <div className="search-panel">
         <div className="search-wrapper">
+          <svg className="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" strokeWidth="1.7" />
+            <path d="m16 16 4.2 4.2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+          </svg>
           <input
             type="text"
             placeholder={t.searchPlaceholder}
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(event) => {
+              searchQueryRef.current = event.target.value.trim();
+              setSearchQuery(event.target.value);
+            }}
             className="search-input"
             dir={isRtl && searchQuery.length === 0 ? "rtl" : "auto"}
+            aria-label={t.searchPlaceholder}
           />
         </div>
-        <button 
-          className="btn-primary"
-          onClick={() => setIsModalOpen(true)}
+        <button
+          className="add-word-button"
+          onClick={openAddModal}
+          aria-label={t.newWordBtn}
+          title={t.newWordBtn}
+          type="button"
         >
-          {t.newWordBtn}
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
         </button>
       </div>
 
-      {loading ? (
-        <div className="empty-state">{t.loading}</div>
-      ) : filteredWords.length === 0 ? (
-        suggestion ? (
-          <div className="did-you-mean">
-            <p>{t.noExactHits}</p>
-            <p>
-              {t.didYouMean} <button className="suggestion-btn" onClick={() => setSearchQuery(suggestion)}>{suggestion}</button>؟
-            </p>
+      <section aria-labelledby="dictionary-title">
+          <div className="dictionary-heading">
+            <h2 id="dictionary-title">{hasQuery ? t.results : t.dictionary}</h2>
+            {!loading && total > 0 && <span className="word-count">{t.wordCount(total)}</span>}
+            {loading && <span className="search-loading-indicator" role="status" aria-label={t.loading} />}
           </div>
-        ) : (
-          <div className="empty-state">
-            {t.noResults} "{searchQuery}" {t.addQuestion}
-          </div>
-        )
-      ) : (
-        <div className="words-grid">
-          {filteredWords.map((item) => (
-            <div key={item.id} className="word-card">
-              <div className="word-tunisian" dir="ltr">{item.tunisian}</div>
-              <div className="word-german" dir="ltr">{item.german}</div>
-              {item.notes && <div className="word-notes">{item.notes}</div>}
-            </div>
-          ))}
-        </div>
-      )}
 
-      <AddWordModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)}
-        onAdd={handleAddWord}
+          {loading && words.length === 0 ? (
+            <div className="empty-state">{t.loading}</div>
+          ) : words.length > 0 ? (
+            <>
+              <div className="words-grid" aria-busy={loading}>
+                {words.map((item) => (
+                  <article
+                    key={item.id}
+                    className="word-card"
+                    onContextMenu={(event) => {
+                      event.preventDefault();
+                      openEditModal(item);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === "ContextMenu" || (event.shiftKey && event.key === "F10")) {
+                        event.preventDefault();
+                        openEditModal(item);
+                      }
+                    }}
+                    tabIndex={0}
+                    title={t.editHint}
+                    aria-label={`${item.tunisian}: ${item.german}. ${t.editHint}`}
+                  >
+                    <div className="word-tunisian" dir="auto">{item.tunisian}</div>
+                    <div className="word-german" dir="auto">{item.german}</div>
+                    {item.notes && <div className="word-notes">{item.notes}</div>}
+                  </article>
+                ))}
+              </div>
+              {hasMore && <div ref={sentinelRef} className="load-more-sentinel" aria-live="polite">{loadingMore ? t.loadingMore : ""}</div>}
+            </>
+          ) : suggestion ? (
+            <div className="did-you-mean" dir={isRtl ? "rtl" : "ltr"}>
+              <p>{t.noExactHits}</p>
+              <p className="suggestion-line">
+                <span>{t.didYouMean}</span>
+                <button className="suggestion-btn" onClick={() => setSearchQuery(suggestion)} type="button" dir="auto">{suggestion}</button>
+                <span>{isRtl ? "؟" : "?"}</span>
+              </p>
+            </div>
+          ) : (
+            <div className="empty-state">{t.noResults}</div>
+          )}
+        </section>
+
+      <AddWordModal
+        key={editingItem?.id || (isModalOpen ? "new-word-open" : "new-word-closed")}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onAdd={handleSavedWord}
         uiLang={uiLang}
+        editingItem={editingItem}
       />
     </main>
   );

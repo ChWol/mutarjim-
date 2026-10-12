@@ -7,8 +7,13 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Tunesisch Übersetzer",
-  description: "Ein moderner Übersetzer für den tunesischen Dialekt",
+  title: "Mutarjim Sariʿ — مترجم سريع",
+  description: "Tunesisch-deutsches Wörterbuch mit klarer Suche und persönlichem Wortschatz.",
+  icons: {
+    icon: "/mutarjim-sari-favicon-v3.ico",
+    shortcut: "/mutarjim-sari-favicon-v3.ico",
+    apple: "/mutarjim-sari-favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
