@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Translator
 
-## Getting Started
+Next.js dictionary app backed by Supabase Postgres.
 
-First, run the development server:
+## Connect a Supabase project
+
+1. Create a Supabase project at [supabase.com/dashboard](https://supabase.com/dashboard). Choose a database password and region, then wait for the project to finish provisioning.
+2. In the project, open **SQL Editor**, create a query, paste and run:
+
+   ```sql
+   create table if not exists public.dictionary (
+     id text primary key,
+     sort_order integer not null,
+     tunisian text not null,
+     german text not null,
+     notes text not null default ''
+   );
+
+   alter table public.dictionary enable row level security;
+   grant all on table public.dictionary to service_role;
+   ```
+
+   The app connects from its Next.js server using a private key, so this table does not need a public read or write policy.
+3. In **Project Settings → API Keys**, copy the **Project URL** and the `service_role` key (or the `sb_secret_...` secret key if your project shows the newer key format). These keys bypass RLS and must stay on the server.
+4. In the project root, create `.env.local` with:
+
+   ```dotenv
+   SUPABASE_URL=https://your-project-id.supabase.co
+   SUPABASE_SERVICE_ROLE_KEY=your-private-server-key
+   ```
+
+   Do not prefix the key with `NEXT_PUBLIC_` or commit `.env.local`.
+5. Import the included dictionary and start the app:
+
+   ```bash
+   npm run db:seed
+   npm run dev
+   ```
+
+   Visit [http://localhost:3000](http://localhost:3000). `npm run db:seed` can be run again to update/import the original entries; it upserts by ID.
+
+## Deploying
+
+Add `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` as server-side environment variables in your hosting provider, then redeploy. Never expose the private key in browser code. The dictionary API currently allows anyone who can reach the app to add and edit entries, matching the existing app behavior; add authentication before making editing private.
+
+## Local development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
